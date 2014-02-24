@@ -59,31 +59,34 @@
   (> (count (:authors book)) 1))
 
 (defn add-author [book new-author]
-  :-)
+    (assoc book :authors (conj (:authors book) new-author)))
 
 (defn alive? [author]
-  :-)
+  (not (contains? author :death-year)))
 
 (defn element-lengths [collection]
-  :-)
+  (map count collection))
 
 (defn second-elements [collection]
-  :-)
+  (let [seconds (fn [x] (get x 1))]
+    (map seconds collection)))
 
 (defn titles [books]
-  :-)
+ (map :title books))
 
 (defn monotonic? [a-seq]
-  :-)
+  (or (apply <= a-seq) (apply >= a-seq)))
 
 (defn stars [n]
-  :-)
+  (apply str (apply concat (repeat n "*"))))
 
 (defn toggle [a-set elem]
-  :-)
+  (cond
+   (not (contains? a-set elem)) (conj a-set elem)
+   :else (disj a-set elem)))
 
 (defn contains-duplicates? [a-seq]
-  :-)
+  (> (count a-seq) (count (set a-seq))))
 
 (defn old-book->new-book [book]
   :-)

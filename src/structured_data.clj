@@ -130,8 +130,11 @@
 (defn books-by-author [author books]
   (filter (fn [books] (has-author? books author)) books))
 
-(defn author-by-name [name authors]
-   :-)
+(defn author-by-name [name authors2]
+   (filter
+    (fn [authors2]
+      (contains? (set (map :name authors2)) name))
+    authors))
 
 (defn living-authors [authors]
   :-)
